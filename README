@@ -1,0 +1,15 @@
+Set up a database called test
+
+then run
+
+python manage.py syncdb
+
+and create a superuser
+
+then
+
+python manage.py runserver
+
+and go to http://127.0.0.1:8000/admin
+
+log in as superuser and create a new organization. 
