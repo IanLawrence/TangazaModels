@@ -194,8 +194,8 @@ admin.site.register(Organization, OrganizationAdmin)
 #Add profile as part of auth_user fields
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
-AuthUserAdmin.list_display += ('member_profile',)
-AuthUserAdmin.fieldsets[0][1]['fields'] += ('member_profile',)
+#AuthUserAdmin.list_display += ('member_profile',)
+#AuthUserAdmin.fieldsets[0][1]['fields'] += ('member_profile',)
 
 
 
