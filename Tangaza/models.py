@@ -195,10 +195,12 @@ class UserGroupHistory(models.Model):
 class UserGroups(models.Model):
     user = models.ForeignKey(Watumiaji)
     group = models.ForeignKey(Vikundi)
-    is_quiet = models.CharField(max_length=9)
+    is_quiet = models.CharField(max_length=9, choices=ISPRIMARY)
     slot = models.IntegerField()
     class Meta:
         db_table = u'user_groups'
+        verbose_name_plural = "Watumiaji's who are members of this Vikundi"
+
 
 class UserPhones(models.Model):
     country = models.ForeignKey(Countries)
