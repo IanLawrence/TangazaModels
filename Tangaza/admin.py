@@ -122,7 +122,7 @@ class GroupsAdmin(admin.ModelAdmin):
 admin.site.register(Vikundi, GroupsAdmin)
 
 #Users customization
-class UserAdmin(admin.ModelAdmin):
+class WatumiajiAdmin(admin.ModelAdmin):
     inlines = [UserPhonesInline]
     form = UserForm
     search_fields = ['userphones__phone_number']
@@ -133,22 +133,6 @@ class UserAdmin(admin.ModelAdmin):
     
     def save_model(self, request, obj, form, change):
         new_watumiaji = form.save(commit=False)
-        new_watumiaji.status = 'good'
-        new_watumiaji.place_id = 1
-        new_watumiaji.level = 'advanced'
-        new_watumiaji.callback_limit = 60
-        new_watumiaji.invitations_remaining = 100
-        new_watumiaji.language_id = 1
-        new_watumiaji.create_stamp = datetime.now()
-        new_watumiaji.modify_stamp = datetime.now()
-        new_watumiaji.notify_stamp = datetime.now()
-        new_watumiaji.notify_period = datetime.now()
-        new_watumiaji.dirty = 'on'
-        new_watumiaji.notify_status = 'on'
-        new_watumiaji.accepted_terms = 'no'
-        new_watumiaji.dirty_time = datetime.now()
-        new_watumiaji.notify_time = datetime.now()
-        new_watumiaji.calling_time = datetime.now()
         new_watumiaji.save()
  
         #obj.save()
@@ -167,7 +151,7 @@ class UserAdmin(admin.ModelAdmin):
     def queryset(self, request):
         #Only returns users that belong to groups from this users organization
         #There has to be a better way of doing this
-        qs = super(UserAdmin, self).queryset(request)
+        qs = super(WatumiajiAdmin, self).queryset(request)
         if not request.user.is_superuser:
             org = request.user.organization_set.get()
             groups = Vikundi.objects.filter(org = org)
@@ -177,7 +161,7 @@ class UserAdmin(admin.ModelAdmin):
         
         return qs
 
-admin.site.register(Watumiaji, UserAdmin)
+admin.site.register(Watumiaji, WatumiajiAdmin)
 
 class OrganizationAdmin(admin.ModelAdmin):
     form = OrgForm
@@ -192,10 +176,19 @@ class OrganizationAdmin(admin.ModelAdmin):
 admin.site.register(Organization, OrganizationAdmin)
 
 #Add profile as part of auth_user fields
-from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
-#AuthUserAdmin.list_display += ('member_profile',)
-#AuthUserAdmin.fieldsets[0][1]['fields'] += ('member_profile',)
+admin.site.unregister(User)
+
+from django.contrib.auth.admin import UserAdmin
+class UserProfileInline(admin.StackedInline):
+    model = Watumiaji
+    max_num = 1
+    inlines = [UserPhonesInline]
+    fields = ['name_text', 'user_pin']
+    #exclude = ['place_id', 'name_file', 'dirty', 'modify_stamp']
 
 
-
+class CustomUserAdmin(UserAdmin):
+    inlines = [UserProfileInline]
+    
+admin.site.register(User, CustomUserAdmin)

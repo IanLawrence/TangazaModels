@@ -19,7 +19,7 @@ logging.basicConfig(
 
 
 
-APP_CONFIG = '/etc/tangaza/settings.conf'
+#APP_CONFIG = '/etc/tangaza/settings.conf'
 
 def read_config():
     parser = ConfigParser.ConfigParser()
@@ -31,7 +31,7 @@ def read_config():
         
     return config_settings
 
-CFG_SETTINGS = read_config()
+#CFG_SETTINGS = read_config()
 
 #Custom settings for sending sms
 SMS_VOICE = {
@@ -72,8 +72,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'test',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'USER': 'vern',                      # Not used with sqlite3.
+        'PASSWORD': 'iy_cw6.57',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -86,7 +86,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Nairobi'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -157,3 +157,5 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+AUTH_PROFILE_MODULE = 'Tangaza.Watumiaji'
