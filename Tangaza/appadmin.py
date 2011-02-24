@@ -34,7 +34,7 @@ from utility import *
 
 lock = threading.RLock()
 
-logger = logging.getLogger('tangaza_logger')
+logger = logging.getLogger(__name__)
 
 ##Admin actions
 @resolve_user
@@ -114,7 +114,8 @@ def delete_group (request, admin, language, group_name_or_slot):
     if not admin.is_admin (group):
         return language.admin_privileges_required (group)
 
-    Vikundi.delete (admin, group)
+    #Vikundi.delete (admin, group)
+    group.delete()
 
     return language.group_deleted (group)
 

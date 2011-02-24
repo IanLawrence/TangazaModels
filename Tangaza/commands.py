@@ -29,7 +29,7 @@ from django.http import HttpResponse
 from utility import *
 from appadmin import *
 
-logger = logging.getLogger('tangaza_logger')
+logger = logging.getLogger(__name__)
 
 ############################################################
 @resolve_user

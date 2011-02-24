@@ -27,14 +27,13 @@ from django.db import transaction
 from django.http import HttpResponse
 from django.conf import settings
 
-logger = logging.getLogger('tangaza_logger')
+logger = logging.getLogger(__name__)
 
 def resolve_user (func):
     
     def validate (*args):
         
         #logger.debug ('validate A')
-        
         p = UserPhones.objects.filter(phone_number = args[1])
         
         if len(p) < 1:
@@ -62,13 +61,15 @@ def resolve_user (func):
 def get_user_by_phone (phone):
     return Users.resolve(phone)
 
-def auto_alloc_slot(user):
+def auto_alloc_slot(user, is_super_user = False):
     logger.info("Auto allocation slot number")
     
-    from sets import Set
-    
-    slots = Set(range(1, 10))
-    used_slots = Set(user.get_used_slots())
+    if is_super_user:
+        slots = set(range(1,1000))
+    else:
+        slots = set(range(1, 10))
+
+    used_slots = set(user.get_used_slots())
     free_slots = slots.difference(used_slots)
     slots = list(free_slots)
     slots.sort()

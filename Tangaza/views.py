@@ -251,7 +251,8 @@ def request_leave (user, language, group):
 				# just one user: us
 				# keep this in for now and test deletions
 				user.leave_group(group)
-				Groups.delete (user, group)
+				#Groups.delete (user, group)
+				group.delete()
 				logger.info ("user %s leaving and deleting group %s" % (user, group))
 				return language.group_deleted (group)
 		else:

@@ -26,7 +26,7 @@ from Test.Tangaza import utility
 from django.contrib.auth.models import User
 
 import logging
-logger = logging.getLogger('tangaza_logger')
+logger = logging.getLogger(__name__)
 
 class UserPhonesInlineFormset(forms.models.BaseInlineFormSet):
     
@@ -129,15 +129,17 @@ class UserGroupsForm(forms.ModelForm):
             ug_form.slot = utility.auto_alloc_slot(ug_form.user)
         
         #if quiet state changed use methods in model
-        ug_db = UserGroups.objects.filter(user_group_id = ug_form.user_group_id)
+        ug_db = UserGroups.objects.filter(pk = ug_form.pk)
         
-        if len(ug_db) > 0: #if it's an edit then ug_db is no empty
+        if len(ug_db) > 0: #if it's an edit then ug_db is not empty
             if ug_db[0].is_quiet != ug_form.is_quiet:
                 if ug_form.is_quiet == 'yes':
                     ug_form.group.set_quiet(ug_form.user)
                 else:
                     ug_form.group.unquiet(ug_form.user)
         
+        #For some reason this value is not set
+        ug_form.group_id = ug_form.group.pk
         ug_form.save()
         
         return ug_form
@@ -177,50 +179,40 @@ class ThreadLocals(object):
 class OrgForm(forms.ModelForm):
     class Meta:
         model = Organization
-    
-    def clean(self):
-        org_admin = self.cleaned_data['org_admin']
-        #if not org_admin.member_profile_id:
-         #   logger.error(u'User has no no associated member profile')
-         #   raise forms.ValidationError(u'The admin has no Tangaza member profile. You need to add all details for this admin from the Auth section in the homepage to proceed.')
-        return self.cleaned_data
 
 #User customization
-class UserForm(forms.ModelForm):
+class WatumiajiForm(forms.ModelForm):
+    #This organization field is needed to link user to organization
+    #NOTE: This will only be visible to superuser who is not linked to any organization
+    organization = forms.ModelChoiceField(queryset = Organization.objects.all())
+    
     class Meta:
         model = Watumiaji
-        exclude = ('status','place_id','level','callback_limit','invitations_remaining','language','name_file','create_stamp','modify_stamp','notify_stamp','notify_period',
-'dirty','notify_status','accepted_terms','dirty_time','notify_time','calling_time')
-              
-#    def clean(self):
-#        request = getattr(_thread_locals, 'request', None)
-#        if request.user.is_superuser:
-#            msg = u'Superusers cannot edit this form at the moment'
-#            logger.error(msg)
-#            raise forms.ValidationError(msg)
+    
+    def __init__(self, *args, **kwargs):
+        #Set the initial value of org in the dropdown list displayed, to be the users org
+        user = kwargs.get('instance', {})
+        logger.debug('something')
+        if user:
+            ug = UserGroups.objects.filter(user = user)
+            
+            if len(ug) > 0:
+                group = ug[0].group
+                initial = kwargs.get('initial', {})
+                initial['organization'] = group.org.pk
+                kwargs['initial'] = initial
+        return super(WatumiajiForm, self).__init__(*args, **kwargs)
 
-#        return self.cleaned_data
-
-class GroupForm(forms.ModelForm):
+class VikundiForm(forms.ModelForm):
     class Meta:
         model = Vikundi
     
     def clean_is_active(self):
         
-        if self.cleaned_data['is_active'] and not self.instance.group_name_file:
+        if self.cleaned_data['is_active'] == 'yes' and not self.instance.group_name_file:
             msg = u'The group cannot be activated until a ' \
                 'voice recording of the group name is provided.'
             logger.error(msg)
             raise forms.ValidationError(msg)
         return self.cleaned_data['is_active']
-    
-#    def clean(self):
-#        request = getattr(_thread_locals, 'request', None)
-#        
-#        if request.user.is_superuser:
-#            msg = u'Superusers cannot edit forms at the moment'
-#            logger.error(msg)
-#            raise forms.ValidationError(msg)
-#        
-#        return self.cleaned_data
 

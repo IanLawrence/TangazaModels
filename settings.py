@@ -6,17 +6,14 @@ import ConfigParser
 import sys
 import os
 
-
-
 # set up some simple logging
 DEBUG = True
 logging.basicConfig(
     level = logging.DEBUG,
-    format = '%(asctime)s %(levelname)s %(message)s',
+    format = '%(asctime)s %(module)s %(levelname)s %(message)s',
     filename = '/tmp/myapp.log',
-    filemode = 'w'
+    filemode = 'w',
 )
-
 
 
 #APP_CONFIG = '/etc/tangaza/settings.conf'
@@ -76,6 +73,9 @@ DATABASES = {
         'PASSWORD': 'iy_cw6.57',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=INNODB',
+        }
     }
 }
 
@@ -127,11 +127,12 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
     'Test.Tangaza.forms.ThreadLocals'
 
 )
