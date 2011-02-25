@@ -69,7 +69,7 @@ class SmsLog(models.Model):
     '''Keeps a log of all smses received by the system'''
     sender = models.CharField(max_length=60)
     text = models.CharField(max_length=600, blank=True)
-    timestamp = models.DateField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     
     class Meta:
         db_table = u'sms_log'
@@ -79,10 +79,10 @@ class Watumiaji(models.Model):
     This is the profile for membership in Tangaza groups. 
     For Any user to be able to communicate using tangaza they need such a profile
     '''
-    user_pin = models.CharField(max_length=18, blank=True)
+    user_pin = models.CharField(max_length=18, blank=True, null=True, default=None)
     status = models.CharField(max_length=33, choices = WATUMIAJI_STATUS, default='good', 
                               help_text=u'Is the member considered good, bad or blacklisted by the admin?')
-    place_id = models.IntegerField(default=1, help_text=u'Where are you from?')
+    place_id = models.IntegerField(default=1, help_text=u'Where are they from?')
     level = models.CharField(max_length=24, choices = LEVELS, default='advanced', help_text=u'Level of expertise in using the system')
     callback_limit = models.IntegerField(default = 60, help_text=u'How much free talk time (seconds) remaining?')
     invitations_remaining = models.IntegerField(default = 100, help_text=u'How many invitations remaining to be sent out?')
@@ -90,18 +90,18 @@ class Watumiaji(models.Model):
     name_file = models.CharField(max_length=96, blank=True, help_text=u'File path to the speech recorded name')
     name_text = models.CharField(unique=True, max_length=255, db_index=True, verbose_name=u'Nickname')
     create_stamp = models.DateTimeField(auto_now_add=True)
-    modify_stamp = models.DateTimeField(null=True)
-    notify_stamp = models.DateTimeField(null=True, help_text=u'When were you last notified that you have new messages?')
-    notify_period = models.TimeField(auto_now_add=True, help_text=u'What time of the day would you like to be notified?')
+    modify_stamp = models.DateTimeField(auto_now=True)
+    notify_stamp = models.DateTimeField(null=True, help_text=u'When were they last notified that you have new messages?')
+    notify_period = models.TimeField(auto_now_add=True, help_text=u'What time of the day would they like to be notified?')
     dirty = models.CharField(max_length=9, choices=YES_NO, default='no')
     notify_status = models.CharField(max_length=9, choices=NOTIFY_STATUS, default='on', 
-                                     help_text=u'Would you like to use the defined notification settings?')
+                                     help_text=u'Would they like to use the defined notification settings?')
     accepted_terms = models.CharField(max_length=9, choices=YES_NO, default='no')
     dirty_time = models.DateTimeField(null=True)
-    notify_time = models.DateTimeField(null=True)
-    calling_time = models.DateTimeField(null=True)
-    user = models.OneToOneField(User, unique=True, null=True, blank=True, verbose_name=u'Tangaza Account', 
-                             help_text=u"What is their Tangaza account?")
+    notify_time = models.DateTimeField(null=True, help_text=u'Last time they were notified')
+    calling_time = models.DateTimeField(null=True, help_text=u'When was their last call?')
+    user = models.OneToOneField(User, unique=True, null=True, blank=True, verbose_name=u'Administrator account', 
+                             help_text=u"What is their web admin account?")
     
     class Meta:
         db_table = u'watumiaji'
@@ -176,13 +176,13 @@ class Watumiaji(models.Model):
         '''
         if phone.startswith('07'):
             phone = "254" + phone[1:]
-
+            
             user = cls.resolve (phone)
         if not user == None:
             return user
-
+        
         return cls.create_user (phone, phone)
-
+    
 
     def leave_group(self, group):
         '''When a user leaves, this deletes any links to vikundi in the UserGroups and GroupAdmin tables in the database'''
