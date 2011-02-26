@@ -8,6 +8,16 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+def get_or_create_user_profile():
+    profile = None
+    user = User.objects.all()[0]
+    try:
+        profile = user.get_profile()
+    except Watumiaji.DoesNotExist:
+        profile = Watumiaji.objects.create(name_text=user.username, user=user) 
+    return profile
+
+
 create_vikundi_object = Signal(providing_args=["auth_user", "group_name", "org"])
 
 def create_vikundi_object_handler(sender,  **kwargs):
@@ -16,7 +26,7 @@ def create_vikundi_object_handler(sender,  **kwargs):
     group_name =  kwargs['group_name']
     org = kwargs['org']
     
-    slot = utility.auto_alloc_slot(auth_user.get_profile(), auth_user.is_superuser)
+    slot = utility.auto_alloc_slot(get_or_create_user_profile(), auth_user.is_superuser)
     Vikundi.create(auth_user.get_profile(), group_name, slot, org = org)
 
 create_vikundi_object.connect(create_vikundi_object_handler)
