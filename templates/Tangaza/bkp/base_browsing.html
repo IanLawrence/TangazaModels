@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+  
+<div id="container">
+
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+   
+      <div id="internal_content_box"> 
+   
+    {% if browsing and perms.BDTools.can_browse %}
+        <b>Project Name:</b> {{browsing.the_project_name}}<br>
+        <b>The Business Opportunity:</b><br> {{browsing.business_case.opportunity }}<br>
+        <b>Local or Global Customers:</b><br> {{browsing.business_case.global_and_local_customers }}<br>
+        <b>The Solution:</b><br> {{browsing.business_case.solution}}<br>
+        <b>Constraints Premises and Restrictions:</b><br> {{browsing.business_case.constraints_premises_and_restrictions }}<br>
+        <b>The Market Potential:</b><br> {{browsing.business_case.market_potential }}<br>
+        <b>Strategic Alignment</b><br> {{browsing.business_case.strategic_alignment  }}<br>
+        <b>Tools and Competencies</b><br> {{browsing.business_case.tools_and_competencies  }}<br>
+        <b>Components of Cost</b><br> {{browsing.business_case.components_of_cost }}<br>
+        {% if browsing.business_case.resources %}
+        <b>Resources:</b><br> <a href="{{browsing.business_case.resources  }}">{{browsing.business_case.resources  }}<br>
+        {% endif %}
+         <b>IRR:</b> {{browsing.spreadsheet.irr}}<br>
+         <b>NPV:</b> {{browsing.spreadsheet.npv}}<br>
+         <b>IE:</b> {{browsing.spreadsheet.ie}}<br>
+    {% else %}
+    <p>Either there are no projects available or you don't have permission to browse.</p>
+    {% endif %}
+         <br><br>    
+      <div class="alignClear"></div>
+      
+
+        <div class="alignClear"></div>
+      </div>
+    
+      <div id="buttons">
+              <div id="button1"><a href="../">Back</a>
+                </div>
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+           
+      </div>
+      <div class="alignClear"></div>
+       
+      
+      <div class="alignClear"></div>
+        </div>
+  </div>
+  
+      {% endblock %}

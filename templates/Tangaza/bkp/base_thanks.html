@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="container">
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+      <div id="internal_content_box"> 
+      Thanks for submitting you project onto our system. Please click the link below to let our automated tools analyze your project.<br><br>
+
+       {% if project %}
+    <a  href="/calculate/{{ project.id}}">Assess {{ project.the_project_name}}<a/>
+
+{% else %}
+    <p>No projects are available.</p>
+{% endif %} 
+       
+         <br><br>    
+      <div class="alignClear"></div>
+      
+
+        <div class="alignClear"></div>
+      </div>
+    
+      <div id="buttons">
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+
+      </div>
+      <div class="alignClear"></div>
+       
+      
+      <div class="alignClear"></div>
+        </div>
+  </div>
+  
+      {% endblock %}
+
+
+

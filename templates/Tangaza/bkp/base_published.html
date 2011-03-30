@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block top %}
+<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+
+        <div class="alignClear"></div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+   
+    <div id="step2">
+    	<img class="alignLeft" src="/media/images/step3.jpg" alt="step 2" width="778" height="34">
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="internalContent">
+          <div id="internalContentBox" align="center">
+       	    <div id="top_box">{% if latest_theme %}
+            <img src="/media/images/top_box_successfully.jpg" width="698" height="47" alt="internal top box">{% endif %} </div>
+            	  <div id="internal_content_box">
+                  	<div id="box">
+               		  
+               		 
+                      <div id="title"  class="general_text">
+                      {% if latest_theme %}<strong>
+</strong><br> </div>
+                      <div id="thumb_preview">
+    <img src="/media/thumbs/{{latest_theme.themethumb}}" width="190" height="113" alt="Theme thumb">{% endif %}</div>
+        
+                        <div id="publish_options" class="internal_gray_box_text">{% if latest_theme  %}<strong>Your theme has been submitted for inclusion on the site.We'll send you an e-mail when your theme is published in the Gallery according to our <a href="/terms">Terms of Use</a></strong><br>
+                        
+
+
+
+ {% else %}
+<div class="general_text">
+  <H3>Your theme was not generated succesfully</H3>
+    <p>Please <a href="/upload/">try again</a>. Try using a file name which matches your theme name.</p></div></div>
+{% endif %} 
+
+
+
+<div class="alignClear"></div></div><br><br><br><br><br><br>
+                      <div id="download_btn">{% if latest_theme %}<a href="/media/downloads/{{latest_theme.deb}}"><img src="/media/images/btn_download_theme.jpg" style="border-style: none" border="0" width="193" height="40" alt="Download your theme"></a>{% endif %}  </div>
+                        <div class="alignClear"></div>
+                    </div><br><br><br><br><br><br>
+                    
+                  </div>
+                  <div id="line"><img class="alignLeft" src="/media/images/line.jpg" alt="line" width="698" height="10">
+                  <div id="buttons">
+                  <div id="button1"><a href="/">Back</a>
+                </div>
+         	  <div id="footer_box"><img src="/media/images/footer_internal_box.jpg" width="698" height="12" alt="home footer box"></div> </div>
+            	  <div class="alignClear"></div>
+                  
+          </div>
+      
+    </div>  
+{% endblock %}
+

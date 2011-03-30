@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<script type="text/javascript">
+// drop down the form function
+function jumptodiv() {
+  document.getElementById("dropdownform").style.display='inline';
+}
+
+// pull the form back up again..i.e make it invisible
+function jumpawayfromdiv() {
+  document.getElementById("dropdownform").style.display='none';
+}
+</script>
+
+{% endblock %}
+
+{% block top %}
+
+
+
+	<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+        <div class="alignClear"></div>
+    </div>	
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+
+	<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="step2">
+    	<img class="alignLeft" src="/media/images/step3.jpg" alt="step 2" width="778" height="34">
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="internalContent">
+          <div id="internalContentBox" align="center">
+       	    <div id="top_box">{% if deb %}
+            <img src="/media/images/top_box_successfully.jpg" width="698" height="47" alt="internal top box">{% endif %} </div>
+            	  <div id="internal_content_box">
+                  	<div id="box">
+               		  <div id="title"  class="general_text"><strong>That's your own theme! Enjoy it and share, if you want</strong><br>
+               		  <br>
+               		  </div>
+                    	{% if deb %}
+                        
+                          <div id="thumb_preview">
+    <img src="/media/themes/flash/theme_thumb_success.png" width="190" height="113" alt="Theme thumb">{% endif %}
+                         </div>
+                              
+        <div id="publish_options" class="internal_gray_box_error">
+                       
+                        <strong>Do you want to publish your <br>theme on Canola website?</strong><br>
+                        
+                        <!-- <table width="200" border="0" cellspacing="0" cellpadding="0"> -->
+              
+
+
+{% if errors %}
+<font color="red">
+<ul>
+    {% for e in errors.items %}
+    <li>{{ e.1|join:", " }}</li>
+    {% endfor %}
+</ul>
+</font>
+
+<div id="publish_options" class="internal_gray_box_text1">
+<form  method="POST"  action="">
+<p><label for="id_name">Name:</label> {{ form.name }}</p>
+<p><label for="id_email">Email:</label> {{ form.email }}</p>
+<p><label for="id_terms">Now read our terms and choose a type of license</p>
+<p><input type="image" src="/media/images/btn_continue.png" ALT="Send details" /></p>
+
+<input type="hidden" name="publish" value="1" />
+</form>
+</div> 
+
+
+ {% else %}
+  <H3>Your theme was not generated succesfully</H3>
+    <p>Please <a href="/upload/">try again</a>. Try using a file name which matches your theme name.</p>
+{% endif %} 
+
+
+<!--</table> -->
+
+
+<div class="alignClear"></div></div><br><br><br><br><br><br>
+                      <div id="download_btn">{% if deb %}<a href="/media/downloads/{{deb}}"><img src="/media/images/btn_download_theme.jpg" style="border-style: none" border="0" width="193" height="40" alt="Download your theme"></a>{% endif %}  </div>
+                        <div class="alignClear"></div>
+                    </div><br><br><br><br><br><br>
+                    
+                  </div>
+                  <div id="line"><img class="alignLeft" src="/media/images/line.jpg" alt="line" width="698" height="10">
+                  <div id="buttons">
+                  <div id="button1"><a href="/">Back</a>
+                </div>
+     	  <div id="footer_box"><img src="/media/images/footer_internal_box.jpg" width="698" height="12" alt="home footer box"></div> </div>
+            	  <div class="alignClear"></div>
+                  
+          </div>
+      
+    </div>  
+   
+    
+</div>
+{% endblock %}

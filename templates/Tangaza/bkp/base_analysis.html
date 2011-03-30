@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="container">
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+      <div id="internal_content_box"> 
+
+       {% if bundle %}
+        The IRR of this project is <b>{{bundle.irr}}</b><br>
+        The NPV of this project is <b>{{bundle.npv}}</b><br>
+        The IE of this project is <b>{{bundle.ie}}</b><br>
+{% else %}
+    <p>Analysis failed.</p>
+{% endif %} 
+       
+         <br><br>    
+      <div class="alignClear"></div>
+      
+
+        <div class="alignClear"></div>
+      </div>
+    
+      <div id="buttons">
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+
+      </div>
+      <div class="alignClear"></div>
+       
+      
+      <div class="alignClear"></div>
+        </div>
+  </div>
+  
+      {% endblock %}
+
+
+

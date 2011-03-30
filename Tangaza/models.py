@@ -310,6 +310,8 @@ class Vikundi(models.Model):
     is_active = models.CharField(max_length=9, blank=True, choices=YES_NO, default='yes')
     is_deleted = models.CharField(unique=True, max_length=9, choices=YES_NULL, default=None, null=True, blank=True)
     org = models.ForeignKey(Organization, verbose_name=u'Organization')
+    #group_leader = models.ForeignKey(User, verbose_name=u'Group Leader', help_text="Who is the Group Leader for this group?")
+   
     
     class Meta:
         db_table = u'vikundi'

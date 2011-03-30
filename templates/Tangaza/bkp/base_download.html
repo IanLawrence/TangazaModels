@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Canola Theme Maker</title>
+<link href="/media/css/canola.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="step2">
+    	<img class="alignLeft" src="/media/images/step3.jpg" alt="step 2" width="778" height="34">
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="internalContent">
+          <div id="internalContentBox" align="center">
+       	    <div id="top_box"><img src="/media/images/top_box_successfully.jpg" width="698" height="47" alt="internal top box"></div>
+            	  <div id="internal_content_box">
+                  	<div id="box">
+               		  <div id="title"  class="general_text"><strong>Lorem ipsum dolor sit amet consectateur <br>nonummy lorenzino.</strong><br>
+               		  <br>
+               		  </div>
+                    	<div id="thumb_preview"><img src="/media/images/img_theme_p.jpg" width="190" height="113" alt="Theme thumb"></div>
+                        <div id="publish_options" class="internal_gray_box_text"><strong>Do you want to publish your <br>theme on Canola website?</strong><br><br><table width="200" border="0" cellspacing="0" cellpadding="0">
+
+                        {% if deb %}
+
+<a href="/media/downloads/{{deb}}"><img src="/media/images/download.jpg"></a><br>
+Do you want to publish your theme on Canola website?
+<label for="number1"><input type="radio" value="1" name="number" id="showform" onClick="jumptodiv();"> YES</label>
+<label for="number2"><input type="radio" value="2" name="number" id="hideform" onClick="jumpawayfromdiv();"> NO</label>
+
+<span id="dropdownform" style="display:none">
+<form  method="POST"  action="">
+<p>
+    <label for="id_name">Name:</label> {{ form.name }}
+</p>
+<p>
+    <label for="id_email">Email:</label> {{ form.email }}
+</p>
+<p>
+    <label for="id_terms">Terms:</label> {{ form.terms }}
+</p>
+<input type="hidden" name="publish" value="1" />
+<input type="submit" value="Send" />
+</form>
+ {% else %}
+  <H3>Your theme was not generated succesfully</H3>
+    <p>Please contact....</p>
+{% endif %} 
+
+
+</table><div class="alignClear"></div></div>
+                      <a href="/media/downloads/{{deb}}"><img src="/media/images/btn_download_theme.jpg" style="border-style: none" border="0" width="193" height="40" alt="Download your theme"></a></div>
+                        <div class="alignClear">
+                    </div>
+                  </div>
+                  <div id="line"><img class="alignLeft" src="/media/images/line.jpg" alt="line" width="698" height="10"></div>
+         	  <div id="footer_box"><img src="/media/images/footer_internal_box.jpg" width="698" height="12" alt="home footer box"></div> 
+            	  <div class="alignClear"></div>
+          </div>
+      
+    </div>  
+    <div id="footer">
+      	<img class="alignLeft" src="/media/images/footer.jpg" alt="footer" width="778" height="104">
+        <div class="alignClear"></div>
+    </div>
+    
+</div>
+</body>
+</html>
+
+
+

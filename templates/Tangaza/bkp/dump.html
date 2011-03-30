@@ -1,0 +1,11 @@
+    {% if file_data  %}
+        <ul>  
+            <li>{{ file_data.name }}</li>
+            <li>{{ file_data.content}}</li>
+            <li>{{ file_data.content_type}}</li>
+        </ul>
+    {% else %}
+        <p>Nothing passed</p>
+    {% endif %}
+
+    

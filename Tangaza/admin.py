@@ -243,8 +243,7 @@ class OrganizationAdmin(admin.ModelAdmin):
         org = obj.save()
         group_name = slugify(obj.org_name).replace('-','')
         
-        custom_signal.create_vikundi_object.send(sender=obj, auth_user=obj.org_admin,
-                                                 group_name=group_name, org=obj)
+        custom_signal.create_vikundi_object.send(sender=obj, auth_user=obj.org_admin, group_name=group_name, org=obj)
 
 admin.site.register(Organization, OrganizationAdmin)
 

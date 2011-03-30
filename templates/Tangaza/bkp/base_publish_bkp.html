@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Canola Theme Maker</title>
+<link href="/media/css/canola.css" rel="stylesheet" type="text/css" >
+</head>
+
+<body>
+
+<div id="container">
+
+	<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="internalContent">
+          <div id="internalContentBox" align="center">
+       	    <div id="top_box_terms"><img src="/media/images/top_box_terms.jpg" width="698" height="47" alt="internal top box"></div>
+            <div id="content_box_terms"><br><br>
+            <b>Introduction</b><br>
+              Welcome to the <b>Canola Theme Maker</b> online service, which is operated by the OpenBossa Labs (http://www.openbossa.org/) and Nokia Technology Institute (http://
+www.indt.org.br).<br>
+By using the <b>Canola Theme Maker</b> service, you, the User, signify your agreement to these terms of use. If you do not agree to these terms of use, you may not use the Canola Theme Maker service. We reserve the right, at our sole discretion, to change, modify, add, or delete portions of these terms of use at any time, without notice.<br><br><br>
+<b>TERMS OF USE</b><br>
+Canola Theme Maker grants you a personal, non-exclusive, limited license to access and use the Canola's DESIGN SHEET and THEME MAKER GUIDELINE solely for your personal, noncommercial use, in order to create your own Canola theme.<br><br>
+<b>Publishing Your Theme</b><br>
+You can allow the publication of your theme on the Canola Web-site, in order to share the work made by you, with a Creative Commons license (more about here: <a href=http://www. creativecommons.org">creativecommons.org</a>. In this way. your copyright will be kept but you will allow others to copy and distribute your work provided they give you credit — and only on the conditions you specify when you give us the permission to publish your theme.
+          <p>
+
+<form action="" method="POST">
+ {% if query %}
+        {% for text in query %}
+        {% ifequal text.id 1 %}
+        <label for="id_license_{{text.id}}"><img src="/media/images/btn_chooselicense.png"><input type="radio" checked="checked" id="id_license_{{text.id}}" value="{{text.id}}" name="license" /> <b>{{text.short_name}}</b></label><br>
+        {{text.long_name}}<br>
+        {% else %}
+           <label for="id_license_{{text.id}}"><img src="/media/images/btn_chooselicense.png"><input type="radio" id="id_license_{{text.id}}" value="{{text.id}}" name="license" /> <b>{{text.short_name}}</b></label><br>
+           {{text.long_name}}<br>
+           {% endifequal %}
+                {% endfor %} 
+{% endif %}
+<br>
+ <b>Your Use of the Site and Site Content</b><br>
+All content appearing on the Site, including without limitation all text, logos, images, user interfaces, illustrations, photographs, screenshots, icons, trademarks, computer code and
+other materials that Canola Theme Maker and its partners make available on or through the Site (collectively “Site Content”), and the collection, arrangement and assembly of such Site
+Content, is the exclusive property of Canola Theme Maker or its partners. <br>
+Site Content is protected under copyright, trademark, trade secret, and other laws.<br><br>
+<b>Additional Use Restrictions</b><br>
+You agree not to use the Site and Canola Theme Maker Service to:<br>
+.: violate any local, state, national or international law or regulation;<br>
+.: transmit any material that is abusive, harassing, tortuous, defamatory, vulgar, obscene, libelous, invasive of another’s privacy, hateful, or racially, ethnically or otherwise
+objectionable;<br>
+.: transmit any unsolicited or unauthorized advertising, promotional materials, junk mail, spam, chain letters, pyramid schemes or any other form of solicitation;<br>
+.: transmit any material that contains software viruses or any other computer code, file or program designed to interrupt, destroy or limit the functionality of any computer software or
+hardware or telecommunications equipment;<br>
+.: stalk, harass or harm another individual;<br>
+.: impersonate any person or entity or otherwise misrepresent your affiliation with a person or entity; or<br>
+.: interfere with or disrupt the Site or servers or networks connected to the Site, or disobey any requirements, procedures, policies, or regulations of networks connected to the Site.<br>
+<br>
+<label for="id_accept"></label> <input type="checkbox" name="accept" id="id_accept" /><b>I have read and I accept these terms of use.</b></p><br><br>
+<p><input type="image" src="/media/images/btn_send.png" ALT="Choose License" /></p>
+</form>
+
+</div>
+
+       	    <div class="alignClear"></div>
+          </div>
+
+      
+    </div>  
+
+       <div id="footer">
+      	<img class="alignLeft" src="/media/images/footer.jpg" alt="footer" width="778" height="104">
+        <div class="alignClear"></div>
+    </div> 
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="/media/css/download_theme.css" />
+{% endblock %}
+ 
+{% block top %}
+<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+
+        <div class="alignClear"></div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<div id="container">
+
+    
+    <div id="step2">
+    	<img class="alignLeft" src="/media/images/download_theme_tittle_page.jpg" alt="download theme tittle" width="778" height="34">
+        <div class="alignClear"></div>
+    </div>	
+    
+    <div id="downloadContent">
+          <div id="downloadContentBox" align="left">
+       	    
+              {% if gallery %}
+             {% for item in gallery %}
+                  <div class="download_box">
+            	<div class="download_box_top"><span class="download_box_tittle">{{item.themename}}</span><br><br><img src="/media/thumbs/{{item.themethumb}}" width="191" height="114"><br>
+            	  Author: <b>{{item.author.name}}</b><br>Publication: <b>{{item.added|date:"D d M Y"}}</b></div>
+
+                <div class="download_box_center"><a href="/terms"><img src="/media/{{item.license.img}}" border="0"></a><br><br>This theme is licensed under {{item.license.short_name}}</div>
+                <div><a href="/media/downloads/{{item.deb}}"><img src="/media/images/download_theme_footer.jpg" BORDER=0></a></div>
+            	<div class="alignClear"></div>
+            </div>
+            {% endfor %}
+            {% else %}
+             No published themes in the gallery
+             {% endif %}
+             
+    </div>  
+    <div class="alignClear"></div>
+    <br><br>
+
+    <div class="alignClear"></div>
+</div>
+{% endblock %}

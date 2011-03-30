@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Tangaza</title>
+<link rel="stylesheet" type="text/css" href="/site_media/css/tangaza.css" />
+{% block extrahead %}{% endblock %}
+
+</head>
+<body>
+   
+ 
+          {% block top %}
+          
+         
+      
+       {% endblock %}
+       
+       
+         {% block content %}
+        
+         
+         
+         {% endblock %}
+         
+         {% block footer %}
+         
+         <div id="footer">
+<div id="footer_copyright">Tangaza is a project brought to you by <a href="http://www.nokia.com" target="_blank">Nokia</a></div>
+<div id="footer_menu"><a href="/">HOME</a> |  <a href="/about">ABOUT</a>  |  <a href="/credits">CREDITS</a>  |  <a href="/terms">TERMS OF USE</a> {% if user.is_authenticated %}| <a href="/accounts/logout/">LOGOUT</a>{% endif %}</div>
+
+<div class="alignClear"></div>
+<br><br>
+</div>
+<div class="alignClear"></div>
+</div>
+
+         
+         {% endblock %}
+</body>
+</html>

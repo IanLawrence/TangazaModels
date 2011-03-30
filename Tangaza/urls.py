@@ -21,6 +21,7 @@
 
 from django.conf.urls.defaults import *
 
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -28,8 +29,12 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('Test.Tangaza.views',
-    # Example:
-    # (r'^tangaza/', include('tangaza.foo.urls')),
+
+
+    # front end of the site
+    (r'^$', 'welcome'),
+    (r'^groups/', 'vikundi'),
+  
 
     # main entry point
     # we parse the message in django, not in kannel

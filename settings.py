@@ -104,7 +104,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media'),
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -160,3 +160,5 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = 'Tangaza.Watumiaji'
+
+STATIC_DOC_ROOT = '/home/ian/Test/media'

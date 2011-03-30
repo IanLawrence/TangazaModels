@@ -1,0 +1,12 @@
+<body>
+<div id="container">
+<div id="header"><img class="alignLeft" src="/media/images/home_top_box.jpg" alt="top" width="778" height="267">
+<div class="alignClear"></div>
+</div>
+<div id="mainContentHome">{% block content %}{% endblock %}</div>
+
+
+<div class="alignClear"></div>
+</div>
+</body>
+

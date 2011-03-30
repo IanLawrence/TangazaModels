@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+{% endblock %}
+{% block content %}
+<div id="container">
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+      <div id="internal_content_box"> 
+      	<h1>Add</h1>
+        <form method="POST" action="/add/{{ field }}">
+			<table>
+				{{ form }}
+			</table>
+			<p><input type="submit" /> | <a href="javascript:window.close()">Cancel</a></p>
+		</form>
+         <br><br>    
+      <div class="alignClear"></div>
+        <div class="alignClear"></div>
+      </div>
+      <div id="buttons">
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+      </div>
+      <div class="alignClear"></div>
+      <div class="alignClear"></div>
+        </div>
+  </div>
+      {% endblock %}
+      {% block footer %}
+      {% endblock %}
+      

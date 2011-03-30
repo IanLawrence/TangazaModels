@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="container">
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+      <div id="internal_content_box"> 
+<form method="POST" action="/add/">
+<table>
+{{ form }}
+</table>
+<p><input type="submit" /> | <a href="javascript:window.close()">Cancel</a></p>
+</form>
+   
+       <!---    <form  method="POST"  enctype="multipart/form-data" action="" name="UploadForm"> 
+             Give a name for your project:<br>
+      <input  name="the_project_name" type="text" id="id_the_project_name" maxlength="18" /> <br>
+      <input  name="related_assumptions" type="text" id="id_related_assumptions" /> <br>
+      <div id="button0"> 
+<INPUT TYPE="image" src="/media/images/btn_preview.jpg" width="194" height="42"  border="0" ALT="Submit Form">
+ </div>
+        </form>--->
+      
+       
+         <br><br>    
+      <div class="alignClear"></div>
+      
+
+        <div class="alignClear"></div>
+      </div>
+    
+      <div id="buttons">
+                <div id="button1"><a href="../">Back</a>
+                </div>
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+
+      </div>
+      <div class="alignClear"></div>
+       
+      
+      <div class="alignClear"></div>
+        </div>
+  </div>
+  
+      {% endblock %}

@@ -29,6 +29,16 @@ from django.http import HttpResponse
 from utility import *
 #from grammar import *
 from appadmin import *
+from Test.Tangaza.models import *
+
+# response and request
+from django.shortcuts import render_to_response, get_object_or_404
+from django.http import HttpResponseRedirect, HttpResponseServerError,  HttpResponse
+from django.template import Context, RequestContext 
+
+# registration
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 logger = logging.getLogger('tangaza_logger')
 
@@ -52,6 +62,23 @@ def sms_id(request, phone, smsc, id):
 def ping(request):
 	logger.debug ('ping')
 	return HttpResponse('pong')
+
+##############################################################################
+# The front of the site
+
+def welcome(request):
+    '''Returns the default start page of the site'''
+    return render_to_response('Tangaza/base_start.html',  context_instance=RequestContext(request))
+
+@login_required
+def vikundi(request):
+    '''Returns the groups associated with the organization'''
+    organizations_groups = GroupAdmin.objects.select_related()
+    # Number of users
+    user_count = UserPhones.objects.count()
+    # Number of messages
+    tangazo_count = PubMessages.objects.count()
+    return render_to_response('Tangaza/base_vikundi.html', {'user_count': user_count, 'tangazo_count':tangazo_count, 'organizations_groups':organizations_groups}, context_instance=RequestContext(request))
 
 ##############################################################################
 # Entry points that resolve the user, and wrap the response

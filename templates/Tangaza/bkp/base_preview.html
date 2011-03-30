@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block top %}
+
+	<div id="header">
+    	<a href="/"><img class="alignLeft" src="/media/images/top_other_pages.jpg" alt="internal top" width="778" height="194"></a>
+
+        <div class="alignClear"></div>
+    </div>	
+    
+{% endblock %}
+
+{% block content %}
+<div id="container">
+    <div id="step2">
+    	<img class="alignLeft" src="/media/images/step2.jpg" alt="step 2" width="778" height="34">
+        <div class="alignClear">
+        </div>
+    </div>		
+    
+    <div id="internalContent">
+          <div id="internalContentBox" align="center">
+       	    <div id="top_box"><img src="/media/images/top_box_ok.jpg" width="698" height="47" alt="internal top box"></div>
+            	  <div id="internal_content_box" >
+
+                  	<div id="content_box_preview">
+                        <div id="title"  class="general_text"><strong>Is everything right? <br>So, go ahead to generate your theme.<br>
+If it's not right, go back and upload the correct design sheet.</strong><br><br></div>
+                        <div id="preview"><img src="/media/themes/flash/preview.png" width="433" height="259" border="0" alt="Theme Preview"><br><br></div>
+                      <div id="buttons_previews">
+                      {% if themethumb %}
+                      	 <form action="" method="post">
+                                      <input type="hidden" name="id" value="{{ id }}" />
+                                      <input type="hidden" name="stage" value="2" />
+                                     <input type="hidden" name="hash" value="{{ hash_value }}" />
+                                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="image"  SRC="/media/images/btn_generate.jpg" width="233" height="40" alt="Generate Theme" /></p>
+                        </form>
+                        {% endif %}
+                       	<div class="alignClear"></div>
+                      </div> 
+                    </div>             
+                  <div class="alignClear"></div>
+
+                  </div>
+                  <div id="line"><img class="alignLeft" src="/media/images/line.jpg" alt="line" width="698" height="10"></div>
+                  
+                  
+                   <div id="buttons">
+                <div id="button1"><a href="/">Back</a>
+                </div>
+       <div id="button2"></div>
+      	<div class="alignClear"></div>
+     </form> 
+      </div>
+      <div class="alignClear"></div>
+       <div id="footer_box"><img src="/media/images/footer_internal_box.jpg" width="698" height="12" alt="home footer box"></div>
+      
+      <div class="alignClear"></div>
+        </div>
+  </div>
+{% endblock %}
+
+    
+
+

@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block extrahead %}
+<script type="text/javascript" src="/media/js/admin/RelatedObjectLookups.js"></script>
+<style type="text/css">
+table, tr, td {
+
+    border-style:solid;
+    border-width:1px;
+    border-color:#B6BBC4;
+    border-collapse:collapse;
+
+}
+  </style>
+
+{% endblock %}
+{% block content %}
+<div id="container">
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+      <div id="internal_content_box"> 
+      
+      
+     <table id="hor-minimalist-b" summary="Employee Pay Sheet"> 
+<thead> 
+<tr> 
+<th scope="col"></th> 
+<th scope="col">Value</th> 
+</tr> 
+</thead> 
+<tbody> 
+
+  <form method="POST" action="/add/{{ field }}">
+  
+<tr> 
+<td>
+    <label>The name of the Spreadsheet</label>
+</td> 
+<td>
+        {{ form.spreadsheet_name.errors }}  {{ form.spreadsheet_name }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>Cost of Capital (WACC)</label>
+</td> 
+<td>
+        {{ form.wacc.errors }} {{ form.wacc}}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>First Half Revenue Year 1</label>
+</td> 
+<td>
+        {{ form.h1.errors }}{{ form.h1 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>Second Half Revenue Year 1</label>
+</td> 
+<td>
+        {{ form.h2.errors }}{{ form.h2 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>First Half Revenue Year 2</label>
+</td> 
+<td>
+        {{ form.h3.errors }}{{ form.h3 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>Second  Half Revenue Year 2</label>
+</td> 
+<td>
+        {{ form.h4.errors }}{{ form.h4 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>First Half Revenue Year 3</label>
+</td> 
+<td>
+        {{ form.h5.errors }}{{ form.h5 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>Second Half Revenue Year 3</label>
+</td> 
+<td>
+        {{ form.h6.errors }}{{ form.h6 }}
+</td> 
+</tr> 
+<tr> 
+<tr> 
+<td>
+    <label>First Half Revenue Year 4</label>
+</td> 
+<td>
+        {{ form.h7.errors }}{{ form.h7 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>Second Half Revenue Year 4</label>
+</td> 
+<td>
+        {{ form.h8.errors }}{{ form.h8 }}
+</td> 
+</tr> 
+<tr> 
+<td>
+    <label>Remaining Costs</label>
+</td> 
+<td>
+        {{ form.remaining_cost.errors }} {{ form.remaining_cost}}
+</td> 
+</tr> 
+<tr> 
+<td>
+
+</td> 
+<td>
+        <p><input type="submit" /> | <a href="javascript:window.close()">Cancel</a></p>
+
+</td> 
+</tr> 
+  </form>
+
+</tbody> 
+</table> 
+
+        
+    
+         <br><br>    
+      <div class="alignClear"></div>
+        <div class="alignClear"></div>
+      </div>
+      <div id="buttons">
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+      </div>
+      <div class="alignClear"></div>
+      <div class="alignClear"></div>
+        </div>
+  </div>
+      {% endblock %}
+      {% block footer %}
+      {% endblock %}
+      

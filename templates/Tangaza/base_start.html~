@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!--- the container for the site --->
+<div id="container"> 
+<div id="mainContentHome"> 
+<div id="homeContent" align="center"> 
+ 
+<div id="top_box"><img src="/media/images/home_top_box_pm.jpg" width=
+"699" height="191" alt="ian"></div> 
+<div id="content_box"> 
+<div id="content_box1"> 
+<br>Browse the projects which are on our system.<br><br>
+
+<br></div> 
+<div id="content_box2"> 
+<p>Do you have an innovative social project for INdT? <br>Does it have a <strong>Business Case,</strong>  <strong>Model</strong>  and <strong>Plan?</strong>  <br><br><br> 
+<strong>If so register the project on our system and let our automated tools analyse it!.</strong> 
+</p> 
+<br> 
+<br></div> 
+<div id="content_box3"> 
+
+
+ 
+<br> 
+</p> 
+<br></div> 
+<div class="alignClear"></div> 
+</div> 
+<div id="footer_box"><img src="/media/images/home_footer_box.jpg"
+width="699" height="66" border="0" usemap="#Map" alt=
+"home top box"></div> 
+</div> 
+<div class="alignClear"></div> 
+</div> 
+ 
+<map name="Map" id="Map"> 
+  <area shape="rect" coords="129,7,212,40" href="browse/" alt=
+"Browse Projects" /> 
+  <area shape="rect" coords="489,5,675,39" href="spreadsheet/" alt="More themes"> 
+<area shape="rect" coords="30,6,113,39" href="browse/" alt=
+"Browse Projects"> 
+<area shape="rect" coords="255,6,441,40" href="add/" alt="Add your project"> 
+</map> 
+{% endblock %}
+
+

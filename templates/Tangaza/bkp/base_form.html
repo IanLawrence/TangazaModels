@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+
+{% endblock %}
+
+{% block top %}
+
+  
+{% endblock %}
+{% block content %}
+  
+  
+<div id="container">
+
+  <div id="step1"> <img class="alignLeft" src="/media/images/step1.jpg" alt="step 1" width="778" height="34">
+    <div class="alignClear"></div>
+  </div>
+  <div id="internalContent">
+    <div id="internalContentBox" align="center">
+      <div id="top_box"><img src="/media/images/top_box_upload.jpg" width="698" height="47" alt="internal top box"></div>
+      <div id="internal_content_box"> 
+   
+           
+  
+        
+      	<div id="form_upload" class="general_text">
+        
+        	<div id="text_form"><strong>Make sure you have created your .tar.gz or .zip file <br>
+       	    (up to 2MB) and upload it to see a preview.
+</strong><br>
+<br></div>
+            
+
+            
+<form  method="POST"  enctype="multipart/form-data" action="" name="UploadForm">
+    
+    <Div align="left"> 
+            {% if form.errors %}<font color="red">Please correct the following:{% endif %}</font>
+               {% if form.themename.errors %}
+                    <ul class="errorlist">
+                                 <font color="red">Theme: {{ form.themename.errors }}</font>
+               {% endif %}
+                    </ul>
+                 {% if form.userfile.errors %}
+              <ul class="errorlist">  
+                                <font color="red">Archive: {{ form.userfile.errors }}</font>
+           {% endif %}
+              </ul>
+    </Div>
+       Give a name for your theme:<br>
+      <input  name="themename" type="text" id="id_themename" maxlength="18" />
+      <br><br>
+ Select an archive: <br>
+            <!--[if !IE]>-->
+             <input type="text" name="display" id="thefile">
+ <label class="cabinet">
+		      <input type="file" id="id_userfile" class="file" name="userfile" onClick="sendText(document.UploadForm.display, document.UploadForm.userfile.value)" onchange="sendText(document.UploadForm.display, document.UploadForm.userfile.value)" />
+            </label>
+            <!--<![endif]-->
+            <!--[if gte IE 5]>
+            <input type="file" id="id_userfile" name="userfile">
+            <![endif]-->
+            
+            <input type="hidden" name="stage" value="1" />
+            
+     </div>   
+       
+         <br><br>    
+      <div class="alignClear"></div>
+      	<div id="button0"> 
+<INPUT TYPE="image" src="/media/images/btn_preview.jpg" width="194" height="42"  border="0" ALT="Submit Form">
+ </div> 
+
+        <div class="alignClear"></div>
+      </div>
+      <div id="line"><img class="alignLeft" src="/media/images/line.jpg" alt="line" width="698" height="10"></div>
+      <div id="buttons">
+                <div id="button1"><a href="../">Back</a>
+                </div>
+        <div id="button2"></div>
+      	<div class="alignClear"></div>
+     </form> 
+      </div>
+      <div class="alignClear"></div>
+       <div id="footer_box"><img src="/media/images/footer_internal_box.jpg" width="698" height="12" alt="home footer box"></div>
+      
+      <div class="alignClear"></div>
+        </div>
+  </div>
+  
+      {% endblock %}
+
+
+  
+
+  
+  
+  
+
+

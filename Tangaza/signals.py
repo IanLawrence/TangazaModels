@@ -18,13 +18,15 @@ def get_or_create_user_profile():
     return profile
 
 
-create_vikundi_object = Signal(providing_args=["auth_user", "group_name", "org"])
+create_vikundi_object = Signal(providing_args=["auth_user","user", "group_name", "org"])
 
 def create_vikundi_object_handler(sender,  **kwargs):
     logger.debug ('Creating vikundi %s' % kwargs)
     auth_user = kwargs['auth_user']
+    #group_leader = kwargs['group_leader']
     group_name =  kwargs['group_name']
     org = kwargs['org']
+   
     
     slot = utility.auto_alloc_slot(get_or_create_user_profile(), auth_user.is_superuser)
     Vikundi.create(auth_user.get_profile(), group_name, slot, org = org)
